@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D3 Monitoring Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>D3 Monitoring Dashboard</h1>
+        <p class="subtitle">Data source: data.gr.ch CSV export (UTC-based calculations)</p>
+      </header>
+
+      <section class="tabs" aria-label="Dashboard sections">
+        <button class="tab-button active" data-tab="late">Late Datasets</button>
+        <button class="tab-button" data-tab="size">Dataset Size</button>
+      </section>
+
+      <section id="errorBox" class="error hidden" role="alert"></section>
+
+      <section id="lateTab" class="tab-panel active" aria-labelledby="Late Datasets">
+        <div class="summary" id="lateSummary"></div>
+        <div class="toolbar">
+          <label>
+            Search
+            <input id="lateSearch" type="text" placeholder="Search title or dataset_id" />
+          </label>
+          <label class="checkbox">
+            <input id="lateOnly" type="checkbox" />
+            Show only late datasets
+          </label>
+        </div>
+        <div class="table-wrap">
+          <table id="lateTable">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="sizeTab" class="tab-panel" aria-labelledby="Dataset Size">
+        <div class="summary" id="sizeSummary"></div>
+        <div class="toolbar">
+          <label>
+            Search
+            <input id="sizeSearch" type="text" placeholder="Search title or dataset_id" />
+          </label>
+          <label class="checkbox">
+            <input id="knownCountOnly" type="checkbox" />
+            Show only datasets with numeric record count
+          </label>
+        </div>
+        <div class="table-wrap">
+          <table id="sizeTable">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
