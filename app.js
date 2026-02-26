@@ -36,7 +36,7 @@ async function init() {
     // - d3.csvParse handles quoted fields, commas inside text, escaped quotes,
     //   and missing values correctly.
     // - We normalize each row into the fields the dashboard needs.
-    const parsed = d3.csvParse(csvText);
+    const parsed = d3.dsvFormat(";").parse(csvText);
     state.raw = parsed.map(normalizeRecord);
 
     renderLateTable();
